@@ -34,3 +34,27 @@ function fromSelectionToInt (selection) {
         return 2
     }
 }
+
+function getResult (playerSelection, computerSelection) {
+    if (playerSelection === 0 && computerSelection === 1) {
+        return -1
+    }
+    else if (playerSelection === 0 && computerSelection === 2) {
+        return 1
+    }
+    else if (playerSelection === 1 && computerSelection === 0) {
+        return 1
+    }
+    else if (playerSelection === 1 && computerSelection === 2) {
+        return -1
+    }
+    else if (playerSelection === 2 && computerSelection === 0) {
+        return -1
+    }
+    else if (playerSelection === 2 && computerSelection === 1) {
+        return 1
+    }
+    else if (playerSelection === computerSelection) {
+        return 0
+    }
+}
