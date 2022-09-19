@@ -20,19 +20,3 @@ function getComputerChoice () {
         return 'Scissors'
     }
 }
-
-function translateSelectionToInt(selection) {
-    selection = selection.toLowerCase();
-    if (selection === 'rock') {
-        return 0
-    }
-    else if (selection === 'paper') {
-        return 1
-    }
-    else if (selection === 'scissors') {
-        return 2
-    }
-    else {
-        return 'Error'
-    }
-}
