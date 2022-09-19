@@ -58,3 +58,18 @@ function getResult (playerSelection, computerSelection) {
         return 0
     }
 }
+
+function printResult (result, playerSelection, computerSelection) {
+    playerSelection = fromIntToSelection(playerSelection)
+    computerSelection = fromIntToSelection(computerSelection)
+
+    if (result === 1) {
+        return `You Win! ${playerSelection} beats ${computerSelection}`
+    }
+    else if (result === -1) {
+        return `You Lose! ${computerSelection} beats ${playerSelection}`
+    }
+    else if (result === 0) {
+        return 'Tie!'
+    }
+}
