@@ -20,3 +20,17 @@ function fromIntToSelection (int) {
         return 'Scissors'
     }
 }
+
+function fromSelectionToInt (selection) {
+    selection = selection.toLowerCase()
+
+    if (selection === 'rock') {
+        return 0
+    }
+    else if (selection === 'paper') {
+        return 1
+    }
+    else if (selection === 'scissors') {
+        return 2
+    }
+}
