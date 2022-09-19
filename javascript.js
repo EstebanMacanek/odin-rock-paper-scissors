@@ -73,3 +73,33 @@ function printResult (result, playerSelection, computerSelection) {
         return 'Tie!'
     }
 }
+
+function game () {
+    let total = 0
+
+    for (let i = 0; i < 5; i++) {
+        let playerSelectionStr = prompt("Rock, Paper or Scissors?")
+        let playerSelection = fromSelectionToInt(playerSelectionStr)
+        
+        if (Number.isInteger(playerSelection)) {
+            let computerSelection = getRandomLessThan3()
+            let result = getResult(playerSelection, computerSelection)
+            total += result
+            console.log(printResult(result, playerSelection, computerSelection))
+        }
+        else {
+            i--
+            console.log(`Error! Unknown Selection: ${playerSelectionStr}`)
+        }
+    }
+
+    if (total > 0) {
+        console.log('End Result: You Won!')
+    }
+    else if (total < 0) {
+        console.log('End Result: You Lose!')
+    }
+    else {
+        console.log('End Result: Tie!')
+    }
+}
