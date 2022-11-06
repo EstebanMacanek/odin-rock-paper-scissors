@@ -76,7 +76,6 @@ function printResult (result, playerSelection, computerSelection) {
 
 function game () {
     let total = 0
-
     for (let i = 0; i < 5; i++) {
         let playerSelectionStr = prompt("Rock, Paper or Scissors?")
         let playerSelection = fromSelectionToInt(playerSelectionStr)
@@ -92,7 +91,6 @@ function game () {
             console.log(`Error! Unknown Selection: ${playerSelectionStr}`)
         }
     }
-
     if (total > 0) {
         console.log('End Result: You Won!')
     }
@@ -103,3 +101,52 @@ function game () {
         console.log('End Result: Tie!')
     }
 }
+
+function fromResultToStr (result) {
+    if (result === 1) {
+        return 'You Won!'
+    }
+    else if (result === 0) {
+        return 'Tie!'
+    }
+    else if (result === -1) {
+        return 'You Lose!'
+    }
+}
+
+function gameResult (score) {
+    if (score > 0) {
+        return 'End Result: You Won!'
+    }
+    else if (score < 0) {
+        return 'End Result: You Lose!'
+    }
+    else {
+        return 'End Result: Tie!'
+    }
+}
+
+let score = 0;
+let numberOfRounds = 0;
+function playRound (playerSelectionStr) {
+    let playerSelection = fromSelectionToInt(playerSelectionStr);
+    let computerSelection = getRandomLessThan3();
+    let result = getResult(playerSelection, computerSelection);
+    let resultStr = fromResultToStr(result);
+    document.querySelector('#result').textContent = resultStr;
+    score += result;
+    document.querySelector('#score').textContent = score;
+    numberOfRounds += 1;
+    if (numberOfRounds === 5) {
+        document.querySelector('#result').textContent = gameResult(score);
+        score = 0;
+        numberOfRounds = 0;
+    }
+}
+
+let buttons = document.querySelectorAll('button');
+buttons.forEach(button => {
+    button.addEventListener('click', e => {
+        playRound(e.target.textContent);
+    })
+});
